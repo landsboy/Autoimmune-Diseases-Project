@@ -7,7 +7,7 @@ from Bio.Seq import Seq
 # Global variables:
 SIZE_OF_SEQ = 88
 MER_LENGHT = 15
-VERSION = "diabetes"
+VERSION = None
 FASTA_PATH = None
 NETMHCPAN_PATH = None
 
@@ -64,8 +64,6 @@ def create_results_file(sb_tuple_edit, wb_tuple_edit, output_edit, output_NO_edi
             sb_tuple_NO_edit.append((int(final_result[6]), final_result[1], final_result[0])) 
 
 def main(args):
-    if VERSION not in ["most_common", "diabetes"]:
-        exit(0)
     list_of_HLA_most_common = ['HLA-DQA10602-DQB10602', 'HLA-DPA10201-DPB10201', 'DRB1_1501', 'HLA-DPA10401-DPB10401', 'HLA-DQA10302-DQB10302']
     list_of_HLA_diabetes = ['HLA-DQA10302-DQB10302', 'HLA-DQA10201-DQB10201', 'DRB1_0401', 'DRB1_0301']
     check_flag = True
@@ -240,8 +238,10 @@ if __name__ == "__main__":
                         help='The path to the netMHCIIpan4.3 tool that needs to be downloaded locally')
     parser.add_argument('-f','--hg38_fa', dest='hg38_fa', action='store' , metavar='hg38_fa', required=True,
                          help='The path to the hg38 genom reference that needs to be downloaded locally')
+    parser.add_argument('-v','--version', dest='version', action='store' , metavar='version', required=True, choices= ["most_common", "diabetes"],
+                         help='What types of people do you want the tool to run on - T1D patients or the general population')
     
     FASTA_PATH = parser.parse_args().hg38_fa
     NETMHCPAN_PATH = parser.parse_args().netmhc_path
-
+    VERSION = parser.parse_args().version
     main(parser.parse_args())
