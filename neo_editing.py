@@ -163,6 +163,7 @@ def main(args):
                     dna_seq = str(Seq(dna_seq).complement())
                     edit_dna_seq = str(Seq(edit_dna_seq).complement())
                 if len(edit_dna_seq) < MER_LENGHT * 3:
+                    final_file.write(f"{row[4]}\t{mutation}\tNo1\n")
                     continue
                 mut_isoforms.append((edit_dna_seq, dna_seq))
 
