@@ -23,7 +23,7 @@ conda activate ADP  # test successful creation
 ```
 3. Run the following file with the following arguments
 ```
-python tcga_patients.py -p <path/to/yours/netMHCpan4.3> -f <path/to/yours/hg38.fa> -v [diabetes/most_common]
+python neo_editing.py -p <path/to/yours/netMHCpan4.3> -f <path/to/yours/hg38.fa> -v [diabetes/most_common]
 ```
 
 # results
